@@ -6,20 +6,21 @@ from django.urls import reverse
 from foodlens.models import Intake
 from datetime import date
 from django.shortcuts import render
-from translate import translate
+from maintenance import calculate_bmr
+from maintenance import calculate_maintenance_calories
 
 L = []
 # from foodlens.views import TOTAL_NUTRIENTS_TODAY
 
-back_to_label = {
-     'Normal Weight and Healthy':2500,
-     'Overweight':1500,
-     'Obesity Class 1':1200,
-     'Obesity Class 3':800,
-     'Obesity Class 2':1000,
-     'Slender':3000
+# back_to_label = {
+#      'Normal Weight and Healthy':2500,
+#      'Overweight':1500,
+#      'Obesity Class 1':1200,
+#      'Obesity Class 3':800,
+#      'Obesity Class 2':1000,
+#      'Slender':3000
 
-}
+# }
 
 dietDict = {
     'd1': 'Balanced Diet',
@@ -100,7 +101,8 @@ def dashboardFunction(request):
             current_date = date.today()
             user_profile = UserProfile.objects.get(user=request.user)
             user_id = request.user.id
-            total_calories = back_to_label[user_profile.output]
+            bmr = calculate_bmr(user_profile.gender,user_profile.weight,user_profile.height,user_profile.gender)
+            total_calories = calculate_maintenance_calories(bmr,user_profile.activity_level)
             results = Intake.objects.filter(user=user_id,timestamp__date=current_date).values('calories')
             calorielist = []
             for i in results:
@@ -116,6 +118,8 @@ def dashboardFunction(request):
             # print(diabetic)
 
             recommended_diet = dietRec(diet,diabetic)
+
+    
 
             return render(request, 'dashboard.html', {'user_profile': user_profile,'calorie_left': calorie_left,'total_calories':total_calories,'recommended_diet':recommended_diet})
         except UserProfile.DoesNotExist:
