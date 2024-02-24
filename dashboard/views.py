@@ -101,7 +101,7 @@ def dashboardFunction(request):
             current_date = date.today()
             user_profile = UserProfile.objects.get(user=request.user)
             user_id = request.user.id
-            bmr = calculate_bmr(user_profile.gender,user_profile.weight,user_profile.height,user_profile.gender)
+            bmr = calculate_bmr(user_profile.gender,user_profile.weight,user_profile.height,user_profile.age)
             total_calories = calculate_maintenance_calories(bmr,user_profile.activity_level)
             results = Intake.objects.filter(user=user_id,timestamp__date=current_date).values('calories')
             calorielist = []
