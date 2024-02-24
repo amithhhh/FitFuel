@@ -61,8 +61,8 @@ To deploy FitFuel, follow these steps:
   - GitHub: [Sharun T N](https://github.com/sharuntn)
 
 - **Amith E K (AI/ML/DL):**
-  - Email: amith7025@gmail.com
-  - GitHub: [Amith E K](https://github.com/amith7025)
+  - Email: amithajith7025@gmail.com
+  - GitHub: [Amith E K](https://github.com/amithhhh)
 
 ## Contribution Guidelines
 
