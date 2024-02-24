@@ -1,5 +1,5 @@
 def calculate_bmr(gender, weight, height, age):
-    if gender.lower() == "men":
+    if gender.lower() == "male":
         bmr = 10 * weight + 6.25 * height - 5 * age + 5
     elif gender.lower() == "female":
         bmr = 10 * weight + 6.25 * height - 5 * age - 161
@@ -12,7 +12,7 @@ def calculate_maintenance_calories(bmr, activity_factor):
     return maintenance_calories
 
 def main():
-    gender = input("Enter gender (Men/Women): ")
+    gender = input("Enter gender (Male/Female): ")
     age = int(input("Enter age (in years): "))
     weight = float(input("Enter weight (in kg): "))
     height = float(input("Enter height (in cm): "))
