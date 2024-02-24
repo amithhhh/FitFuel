@@ -24,6 +24,8 @@ def editprofileFunction(request):
         user_profile.height = request.POST.get('height')
         user_profile.abdomen = request.POST.get('abdomen')
         user_profile.diabetic = request.POST.get('diabetic', 'not_sure')
+        user_profile.gender = request.POST.get('gender','Male')
+        user_profile.activity_level = request.POST.get('activity_level',1.85)
         user_profile.profile_picture = request.FILES.get('profile_picture')
 
         #BMI

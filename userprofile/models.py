@@ -20,7 +20,7 @@ class UserProfile(models.Model):
         ( 1.85, 'Moderately active'),
         ( 2.2, 'Vigorously active'),
         ( 2.4, 'Extremely active')
-    ])
+    ],default=1.85)
     diabetic = models.CharField(max_length=20, choices=[
         ('diabetic', 'Diabetic'),
         ('not_diabetic', 'Not Diabetic'),
